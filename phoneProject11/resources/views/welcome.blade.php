@@ -1,24 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Начална страница</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container text-center mt-5">
-        <h1>Добре дошли в приложението за телефони и магазини!</h1>
-        <p class="lead">Изберете секция, за да разгледате наличните данни.</p>
+<!-- resources/views/welcome.blade.php -->
+@extends('layouts.app')
 
-        <div class="mt-4">
-            <a href="{{ route('phones.index') }}" class="btn btn-primary btn-lg mx-2">Телефони</a>
-            <a href="{{ route('stores.index') }}" class="btn btn-success btn-lg mx-2">Магазини</a>
+@section('content')
+    <div class="text-center">
+        <h1>Добре дошли в приложението за телефони и магазини!</h1>
+        <p class="lead">Разгледайте наличните телефони и магазини.</p>
+
+
+
+<a href="{{ route('login') }}" class="btn btn-warning btn-lg mx-2">Вход</a>
+    <a href="{{ route('register') }}" class="btn btn-warning btn-lg mx-2">Регистрация</a>
+
+    <!-- Бутоните за Админ панел -->
+    <a href="{{ route('phones.index') }}" class="btn btn-primary btn-lg mx-2">Админ Панел</a>
+
+    <a href="{{ route('stores.index') }}" class="btn btn-success btn-lg mx-2">Магазини</a>
+
+        
+        <h2 class="mt-4">Най-продавани Телефони</h2>
+        <div class="row">
+            @foreach ($phones as $phone)
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $phone->brand }} - {{ $phone->model }}</h5>
+                            <p class="card-text">Цена: {{ $phone->price }} лв.</p>
+                            <p class="card-text">Цвят: {{ $phone->color }}</p>
+                            <p class="card-text">{{ $phone->in_stock ? 'В наличност' : 'Изчерпан' }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <h2 class="mt-4">Магазини</h2>
+        <div class="row">
+            @foreach ($stores as $store)
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $store->name }}</h5>
+                            <p class="card-text">Адрес: {{ $store->address }}</p>
+                            <p class="card-text">Телефон: {{ $store->phone }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
-
-    <!-- Bootstrap JS (по желание) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection
