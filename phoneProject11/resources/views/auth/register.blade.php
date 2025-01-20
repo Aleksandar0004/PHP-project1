@@ -16,7 +16,7 @@
         }
         .register-card {
             background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
+            border-radius: 9px;
             padding: 2rem;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
             width: 100%;
