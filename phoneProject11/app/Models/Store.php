@@ -9,6 +9,5 @@ class Store extends Model
 {
     use HasFactory;
 
-    // Декларираме кои полета могат да бъдат масово попълвани (Mass Assignment)
     protected $fillable = ['name', 'address', 'phone'];
 }

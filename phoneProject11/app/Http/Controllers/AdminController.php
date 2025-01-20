@@ -11,12 +11,12 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('is_admin'); // Този middleware ще проверява дали потребителят е администратор
+        $this->middleware('is_admin'); 
     }
 
     public function dashboard()
     {
-        return view('admin.dashboard'); // Променете към view за администраторския dashboard
+        return view('admin.dashboard');
     }
 
     public function editPhone($id)

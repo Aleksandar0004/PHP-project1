@@ -9,18 +9,18 @@ class PhoneController extends Controller
 {
     public function index()
     {
-        $phones = Phone::all(); // Взимаме всички телефони
+        $phones = Phone::all(); 
         return view('phones.index', compact('phones'));
     }
 
     public function create()
     {
-        return view('phones.form'); // Показваме формата за създаване
+        return view('phones.form');
     }
 
     public function store(Request $request)
     {
-        // Валидация
+      
         $request->validate([
             'brand' => 'required|string|max:255',
             'model' => 'required|string|max:255',
@@ -29,7 +29,7 @@ class PhoneController extends Controller
             'in_stock' => 'required|boolean',
         ]);
 
-        // Създаване на нов телефон
+       
         Phone::create($request->all());
 
         return redirect()->route('phones.index')->with('success', 'Phone added successfully.');
@@ -37,12 +37,12 @@ class PhoneController extends Controller
 
     public function edit(Phone $phone)
     {
-        return view('phones.form', compact('phone')); // Показваме формата за редакция
+        return view('phones.form', compact('phone')); 
     }
 
     public function update(Request $request, Phone $phone)
     {
-        // Валидация
+       
         $request->validate([
             'brand' => 'required|string|max:255',
             'model' => 'required|string|max:255',
@@ -51,7 +51,7 @@ class PhoneController extends Controller
             'in_stock' => 'required|boolean',
         ]);
 
-        // Актуализиране на телефон
+        
         $phone->update($request->all());
 
         return redirect()->route('phones.index')->with('success', 'Phone updated successfully.');
@@ -59,7 +59,7 @@ class PhoneController extends Controller
 
     public function destroy(Phone $phone)
     {
-        $phone->delete(); // Изтриване на телефон
+        $phone->delete(); 
         return redirect()->route('phones.index')->with('success', 'Phone deleted successfully.');
     }
 }

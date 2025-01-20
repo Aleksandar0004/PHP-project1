@@ -21,7 +21,7 @@ use App\Models\Store;
 |
 */
 
-// Админски маршрути
+
 Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('phone/{id}/edit', [AdminController::class, 'editPhone'])->name('admin.editPhone');
@@ -29,25 +29,24 @@ Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::delete('phone/{id}', [AdminController::class, 'deletePhone']);
 });
 
-// Автентикация
+
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-// Регистрация
 Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('register', [RegisteredUserController::class, 'store']);
 
-// Ресурсни маршрути за телефони и магазини
+
 Route::resource('phones', PhoneController::class);
 Route::resource('stores', StoreController::class);
 
-// Потребителски маршрути
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');  // Добавете този маршрут за потребителския dashboard
+})->name('dashboard'); 
 
-// Начална страница
+
 Route::get('/', function () {
     $phones = Phone::latest()->take(6)->get(); 
     $stores = Store::latest()->take(3)->get(); 
