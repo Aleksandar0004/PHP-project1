@@ -32,7 +32,7 @@
             @endforeach
         </div>
 
-        <h2 class="mt-4">Магазини</h2>
+        <h2 class="mt-4">Всички магазини</h2>
         <div class="row">
             @foreach ($stores as $store)
                 <div class="col-md-4">
