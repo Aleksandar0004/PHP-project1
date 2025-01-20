@@ -11,8 +11,7 @@
 <a href="{{ route('login') }}" class="btn btn-warning btn-lg mx-2">Вход</a>
     <a href="{{ route('register') }}" class="btn btn-warning btn-lg mx-2">Регистрация</a>
 
-    <!-- Бутоните за Админ панел -->
-    <a href="{{ route('phones.index') }}" class="btn btn-primary btn-lg mx-2">Админ Панел</a>
+    <a href="{{ route('phones.index') }}" class="btn btn-primary btn-lg mx-2">Всички телефони</a>
 
     <a href="{{ route('stores.index') }}" class="btn btn-success btn-lg mx-2">Магазини</a>
 
